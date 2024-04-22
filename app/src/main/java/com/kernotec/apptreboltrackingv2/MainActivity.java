@@ -54,15 +54,13 @@ public class MainActivity extends AppCompatActivity implements MapListener, GeoP
         if (!checkStoragePermissions())
             requestForStoragePermissions();
     }
-    public boolean checkStoragePermissions(){
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.R){
-            //Android is 11 (R) or above
+    //Modifique el checksstoragepermissions
+    public boolean checkStoragePermissions() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             return Environment.isExternalStorageManager();
-        }else {
-            //Below android 11
+        } else {
             int write = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
             int read = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE);
-
             return read == PackageManager.PERMISSION_GRANTED && write == PackageManager.PERMISSION_GRANTED;
         }
     }
